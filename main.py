@@ -43,6 +43,23 @@ for file in filepaths:
         pdf.cell(w=30, h=8, txt=str(row["price_per_unit"]), border=1)
         pdf.cell(w=30, h=8, txt=str(row["total_price"]), border=1, ln=1)
 
+    total_price = read_file["total_price"].sum()
+    pdf.cell(w=30, h=8, txt="", border=1)
+    pdf.cell(w=45, h=8, txt="", border=1)
+    pdf.cell(w=30, h=8, txt="", border=1)
+    pdf.cell(w=30, h=8, txt="", border=1)
+    pdf.cell(w=30, h=8, txt=str(total_price), border=1, ln=1)
+    # print(total_price)
+
+    # Total Price
+    pdf.ln(15)
+    pdf.set_font(style="B", family="Times", size=16)
+    pdf.cell(w=50, h=8, txt=f"The total price is {total_price}", ln=1)
+
+    pdf.ln(10)
+    pdf.cell(w=50, h=8, txt=f"Elarinha Relatórios")
+    pdf.image("pythonhow.png", w=10)
+
     pdf.output(f"pdfs/{filename}.pdf")
     # print(date_invoice)
 
